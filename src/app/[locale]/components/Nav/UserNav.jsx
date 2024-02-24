@@ -68,7 +68,7 @@ export function UserNav({ data, t }) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <NavContract text={t.ConnectWallet} />
+            <NavContract text={t.ConnectWallet} fatext={t.WalletNameS} />
           </DropdownMenuItem>
           {navItems.map((item, index) => (
             <DropdownMenuItem key={index} asChild>

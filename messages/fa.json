@@ -66,7 +66,8 @@
     "MyQuestions": "لیست سوالات من",
     "saveQuestions": "سوالات ذخیره شده",
     "LogOut": "خروج",
-    "ConnectWallet": "Connect Wallet",
+    "ConnectWallet": "اتصال به کیف پول",
+    "WalletNameS": "کیف پول",
     "SettingsPage": {
       "title": "تغییر اطلاعات اکانت",
       "name": "نام",
@@ -115,5 +116,10 @@
   "QuestionsPageCom": {
     "title": "سوالات",
     "Details": "جزئیات"
+  },
+  "QuestionDetailCom": {
+    "vote": "رای",
+    "voteCount": "تعداد رای ها",
+    "author": "مطرح کننده"
   }
 }

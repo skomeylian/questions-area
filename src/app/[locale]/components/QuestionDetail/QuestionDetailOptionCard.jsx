@@ -26,6 +26,7 @@ const QuestionDetailOptionCard = ({
   questionId,
   count,
   isPastDate,
+  t
 }) => {
   const router = useRouter();
 
@@ -50,9 +51,9 @@ const QuestionDetailOptionCard = ({
         <h1 className="text-2xl w-full border-b-2 border-primary ">{title}</h1>
         <p className="text-primary-foreground w-full text-base my-5">{desc}</p>
         <div className="w-full flex flex-row-reverse justify-between items-center">
-          <p>Vote Count: {count}</p>
+          <p>{t.voteCount }: {count}</p>
           <Button onClick={send} disabled={isPastDate}>
-            Vote
+            {t.vote}
           </Button>
         </div>
       </div>

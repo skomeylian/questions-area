@@ -4,12 +4,12 @@ import { connectWallet, truncate } from "../../../../../services/blockchain";
 import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 
-const NavContract = ({ text }) => {
+const NavContract = ({ text, fatext }) => {
   const { wallet } = useSelector((states) => states.globalStates);
 
   return wallet ? (
     <Button className="w-full flex text-center justify-between bg-primary cursor-not-allowed">
-      Wallet :{" "}
+      {fatext} :{" "}
       {truncate({ text: wallet, startChars: 4, endChars: 4, maxLength: 11 })}
     </Button>
   ) : (

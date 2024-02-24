@@ -67,6 +67,7 @@
     "saveQuestions": "Save Questions",
     "LogOut": "Log Out",
     "ConnectWallet": "Connect Wallet",
+    "WalletNameS": "Wallet",
     "SettingsPage": {
       "title": "Change account Information",
       "name": "Name",
@@ -115,5 +116,10 @@
   "QuestionsPageCom": {
     "title": "Questions",
     "Details": "Details"
+  },
+  "QuestionDetailCom" : {
+    "vote" : "Vote",
+    "voteCount" : "Vote Count",
+    "author" : "Author"
   }
 }

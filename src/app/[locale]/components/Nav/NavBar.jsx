@@ -13,7 +13,7 @@ const NavBar = ({ session }) => {
   return (
     <nav className="p-5 flex justify-between items-center border ">
       <Link href={"/"}>
-        <h1>Queston Area</h1>
+        <h1>LogikMeter</h1>
       </Link>
       <div className="flex items-center gap-3">
         {session == null ? <></> : <UserNav t={t.Dashboard} data={session} />}

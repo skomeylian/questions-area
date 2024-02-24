@@ -3,16 +3,17 @@ import React from "react";
 import QuestionDetailOptionCard from "./QuestionDetailOptionCard";
 import { useSelector } from "react-redux";
 import uniqid from "uniqid";
+import { useMessages } from "next-intl";
 
-const QuestionDetailCl = ({ res }) => {
+const QuestionDetailCl = ({ res  , t}) => {
   const { wallet } = useSelector((states) => states.globalStates);
-  
+
   // Check if the selected date is in the past
   const currentDate = new Date();
   const selectedDate = new Date(res.data.endDate);
 
   const isPastDate = selectedDate < currentDate;
-  console.log(isPastDate)
+  console.log(isPastDate);
   const wa = wallet;
   return (
     <section className="flex flex-col p-2">
@@ -22,7 +23,7 @@ const QuestionDetailCl = ({ res }) => {
         </h1>
         <p className="text-primary-foreground text-base ">{res.data.caption}</p>
         <p className="my-2">
-          Author: <span className="text-primary">{res.data.author}</span>
+          {t.author}: <span className="text-primary">{res.data.author}</span>
         </p>
         {/* <p>Wallet Addres</p> */}
       </div>
@@ -38,6 +39,7 @@ const QuestionDetailCl = ({ res }) => {
                 isPastDate={isPastDate}
                 key={uniqid()}
                 {...item}
+                t={t}
               />
             )
             // console.log(item)
