@@ -39,7 +39,7 @@ const HomePageComponent = ({ isAuth }) => {
   return (
     <main className="flex flex-col-reverse xl:flex-row-reverse xl:justify-between xl:items-start xl:px-5 w-full items-center justify-center bg-card">
       <section className="flex flex-col items-center justify-center w-[80%] mt-5">
-        <h1 className="text-2xl font-bold text-primary">Question Area</h1>
+        <h1 className="text-2xl font-bold text-primary">LogikMeter</h1>
         {/* <h2>{t("subTitle")}</h2> */}
         <QuestionsPageComponent t={t.QuestionsPageCom} subT={false} />
       </section>

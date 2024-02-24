@@ -61,7 +61,7 @@ const SideNav = ({ isAuth }) => {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>
-            <Link href={"/"}>Question Area</Link>
+            <Link href={"/"}>LogikMeter</Link>
           </SheetTitle>
         </SheetHeader>
         <div className="flex flex-col gap-4 py-4">
