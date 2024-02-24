@@ -12,7 +12,7 @@ const QuestionDetailCl = ({ res }) => {
   const selectedDate = new Date(res.data.endDate);
 
   const isPastDate = selectedDate < currentDate;
-
+  console.log(isPastDate)
   const wa = wallet;
   return (
     <section className="flex flex-col p-2">
