@@ -11,7 +11,7 @@ export async function POST(req, res) {
   await connectDb();
 
   const data = await req.json();
-  const { title, description, startDate, options, endDate } = data;
+  const { title, description, options, endDate } = data;
 
   if (!title || !description || !options) {
     return NextResponse.json(

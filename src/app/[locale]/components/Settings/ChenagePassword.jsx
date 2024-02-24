@@ -34,7 +34,7 @@ const ChenagePassword = ({ t }) => {
       );
       console.log(res);
       if (res.status !== 200) {
-        console.log(res.error);
+        console.log(res.response.data.message);
       }
       router.refresh();
     },

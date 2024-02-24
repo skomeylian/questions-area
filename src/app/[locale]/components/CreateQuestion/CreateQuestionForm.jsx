@@ -34,8 +34,6 @@ import {
 } from "@/components/ui/popover";
 
 const CreateQuestionForm = ({ t }) => {
-  const dispatch = useDispatch();
-  const { wallet, createModal } = useSelector((states) => states.globalStates);
   const schemaValidate = validateSchemaCreateQuestion(t);
   const router = useRouter();
 
@@ -47,8 +45,6 @@ const CreateQuestionForm = ({ t }) => {
   });
   const [finalOptions, setFinalOptions] = useState([]);
 
-  const [timeS, setTimeS] = useState("");
-  const [timeX, setTimeX] = useState("");
   const [date, setDate] = React.useState();
   console.log();
 
@@ -83,8 +79,61 @@ const CreateQuestionForm = ({ t }) => {
       const isSave = confirm(t.saveQuestion);
       console.log(isSave);
       if (isSave == false) {
-        const res = await axios.post(
-          "/api/auth/create-question",
+        await axios
+          .post(
+            "/api/auth/create-question",
+            {
+              title: inpTitle,
+              description: inpSubTitle,
+              options: finalOptions,
+              endDate: date,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            // console.log({ resS: res });
+            toast.success(res.data.message);
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(res.response.data.message);
+          });
+        // if (res.response.status !== 200) {
+        //   console.log(res);
+        //   toast.error(res.response.data.message);
+        // }
+        // if (res.data.status == "success") {
+        //   toast.success("Success!");
+        // }
+      } else {
+        await axios
+          .post(
+            "/api/auth/create-question",
+            {
+              title: inpTitle,
+              description: inpSubTitle,
+              options: finalOptions,
+              endDate: date,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            toast.success(res.data.message);
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(res.response.data.message);
+          });
+        await axios.post(
+          "/api/auth/save-question",
           {
             title: inpTitle,
             description: inpSubTitle,
@@ -97,49 +146,13 @@ const CreateQuestionForm = ({ t }) => {
             },
           }
         );
-        if (res.status !== 200) {
-          console.log(res);
-          toast.error(res.error);
-        }
-        if (res.data.status == "success") {
-          toast.success("Success!");
-        }
-      } else {
-        const res = await axios.post(
-          "/api/auth/create-question",
-          {
-            title: inpTitle,
-            description: inpSubTitle,
-            options: finalOptions,
-            startDate: date,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        await axios.post(
-          "/api/auth/save-question",
-          {
-            title: inpTitle,
-            description: inpSubTitle,
-            options: finalOptions,
-            startDate: date,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (res.status !== 200) {
-          console.log(res);
-          toast.error(res.response.data.message);
-        }
-        if (res.data.status == "success") {
-          toast.success("Success!");
-        }
+        // if (res.response.status !== 200) {
+        //   console.log(res);
+        //   toast.error(res.response.data.message);
+        // }
+        // if (res.data.status == "success") {
+        //   toast.success("Success!");
+        // }
       }
     },
   });

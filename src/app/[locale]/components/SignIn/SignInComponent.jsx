@@ -28,7 +28,7 @@ const SignInComponent = ({ t }) => {
       // console.log(res);
       if (res.status !== 200) {
         console.log(res);
-        toast.error(res.error);
+        toast.error(res.response.data.message);
       } else {
         toast.success(t.successMessage);
         window.localStorage.setItem("em", email);
