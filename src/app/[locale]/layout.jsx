@@ -9,6 +9,8 @@ import { getServerSession } from "next-auth";
 import { Toaster } from "react-hot-toast";
 import FooterComponent from "./components/Footer";
 import StoreProvider from "./StoreProvider";
+import DashboardNav from "./components/Nav/DashboardNav";
+import HomeSideNv from "./components/Home/HomeSideNv";
 const inter = Inter({ subsets: ["latin"] });
 const IranSansFont = localeFont({
   src: "../../assets/fonts/IRANSansX-Medium.ttf",
@@ -39,8 +41,14 @@ export default async function RootLayout({ children, params: { locale } }) {
           <SessionProvider session={session}>
             <StoreProvider>
               <NavBar session={session} />
-              {children}
-              {/* <FooterComponent /> */}
+              <div className="flex flex-col space-y-6 mt-10 ">
+                <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
+                  <aside className=" w-[200px] flex-col md:flex">
+                    <HomeSideNv session={session} />
+                  </aside>
+                  <main>{children}</main>
+                </div>
+              </div>
               <Toaster position="top-center" reverseOrder={false} />
             </StoreProvider>
           </SessionProvider>

@@ -43,30 +43,6 @@ const HomePageComponent = ({ isAuth }) => {
         {/* <h2>{t("subTitle")}</h2> */}
         <QuestionsPageComponent t={t.QuestionsPageCom} subT={false} />
       </section>
-      <section>
-        <div className="flex flex-col gap-4 py-4 xl:w-full mt-5">
-          {isAuth == null ? (
-            <>
-              <Link href={"/signin"}>{t.Index.signIn}</Link>
-              <Link href={"/signup"}>{t.Index.signUp}</Link>
-              <Link href={"/questions"}>{t.Index.questions}</Link>
-            </>
-          ) : (
-            navItems.map((item) => (
-              <Link
-                key={uniqid()}
-                href={item.href}
-                className="w-full flex justify-between items-center gap-5 hover:bg-card p-2"
-              >
-                {item.name}
-                <span>
-                  <item.icon />
-                </span>
-              </Link>
-            ))
-          )}
-        </div>
-      </section>
     </main>
   );
 };

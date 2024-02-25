@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDb from "../../../../../utils/connectDB";
 import Question from "@/models/Question";
 
+
 export async function POST(req, res) {
   await connectDb();
   const data = await req.json();
@@ -21,7 +22,6 @@ export async function POST(req, res) {
       { status: 400 }
     );
   }
-
   const updatedQuestion = await Question.findOne({
     questionId,
     "options.id": optionId,
