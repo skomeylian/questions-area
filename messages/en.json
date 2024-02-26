@@ -68,6 +68,10 @@
     "LogOut": "Log Out",
     "ConnectWallet": "Connect Wallet",
     "WalletNameS": "Wallet",
+    "title": "Hello world!",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "questions": "Questions",
     "SettingsPage": {
       "title": "Change account Information",
       "name": "Name",
@@ -106,7 +110,7 @@
       "inpSubValidateLong": "Description must be 3 or more characters long",
       "submit": "Create",
       "saveQuestion": "Would you like to save your question?",
-      "addB" : "Add Option",
+      "addB": "Add Option",
       "addBTitle": "Add",
       "addBCaption": "Click save when you re done.",
       "addInpTitle": "Title",
@@ -117,9 +121,9 @@
     "title": "Questions",
     "Details": "Details"
   },
-  "QuestionDetailCom" : {
-    "vote" : "Vote",
-    "voteCount" : "Vote Count",
-    "author" : "Author"
+  "QuestionDetailCom": {
+    "vote": "Vote",
+    "voteCount": "Vote Count",
+    "author": "Author"
   }
 }

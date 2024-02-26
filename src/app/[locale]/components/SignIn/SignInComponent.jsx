@@ -32,7 +32,7 @@ const SignInComponent = ({ t }) => {
       } else {
         toast.success(t.successMessage);
         window.localStorage.setItem("em", email);
-        router.push("/accounts/dashboard");
+        router.push("/");
         router.refresh();
       }
     },

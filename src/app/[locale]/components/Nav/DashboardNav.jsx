@@ -5,7 +5,7 @@ import { Home, Settings, SquarePen, ScrollText } from "lucide-react";
 import NavContract from "./NavContract";
 
 const DashboardNav = ({ t, session }) => {
-  // console.log(t);
+  console.log({ session });
   const navItems = [
     { name: t.Home, href: "/accounts/dashboard", icon: Home },
 
@@ -35,12 +35,27 @@ const DashboardNav = ({ t, session }) => {
   const pathname = usePathname();
   return (
     <nav className="grid items-start gap-2">
-      {session == null ? (
-        <>
-          <Link href={"/signin"}>{t.Index.signIn}</Link>
-          <Link href={"/signup"}>{t.Index.signUp}</Link>
-          <Link href={"/questions"}>{t.Index.questions}</Link>
-        </>
+      {!session ? (
+        <div className="flex flex-col gap-3">
+          <Link
+            className="hover:text-primary transition-colors"
+            href={"/signin"}
+          >
+            {t.signIn}
+          </Link>
+          <Link
+            className="hover:text-primary transition-colors"
+            href={"/signup"}
+          >
+            {t.signUp}
+          </Link>
+          <Link
+            className="hover:text-primary transition-colors"
+            href={"/questions"}
+          >
+            {t.questions}
+          </Link>
+        </div>
       ) : (
         <>
           {navItems.map((item, index) => (
@@ -59,7 +74,6 @@ const DashboardNav = ({ t, session }) => {
           <NavContract text={t.ConnectWallet} fatext={t.WalletNameS} />
         </>
       )}
-      
     </nav>
   );
 };
