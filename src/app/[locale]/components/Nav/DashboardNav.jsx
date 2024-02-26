@@ -5,7 +5,7 @@ import { Home, Settings, SquarePen, ScrollText } from "lucide-react";
 import NavContract from "./NavContract";
 
 const DashboardNav = ({ t, session }) => {
-  console.log({ session });
+  // console.log({ session });
   const navItems = [
     { name: t.Home, href: "/accounts/dashboard", icon: Home },
 

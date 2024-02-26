@@ -3,17 +3,14 @@ import { NextResponse } from "next/server";
 import connectDb from "../../../../../utils/connectDB";
 
 import User from "@/models/User";
-import Question from "@/models/Question";
-import uniqid from "uniqid";
-import slugify from "slugify";
 
 export async function POST(req, res) {
   await connectDb();
 
   const data = await req.json();
-  const { title, description, options, endDate } = data;
+  const { options } = data;
 
-  if (!title || !description || !options) {
+  if (!options) {
     return NextResponse.json(
       {
         status: "failed",
@@ -36,9 +33,6 @@ export async function POST(req, res) {
     );
   }
 
-  const newEndDate = endDate == undefined ? "01" : endDate;
-  console.log(newEndDate);
-
   const user = await User.findOne({ email: session.user.email });
   if (!user) {
     return NextResponse.json(
@@ -49,25 +43,8 @@ export async function POST(req, res) {
       { status: 404 }
     );
   }
-  const authorName = user?.name;
-  console.log(authorName);
 
-  const oldTitle = `${title + " " + uniqid()}`;
-  const convertTitle = slugify(oldTitle);
-
-  const newQuestion = new Question({
-    questionId: convertTitle,
-    author: authorName,
-    title: title,
-    caption: description,
-    options: options,
-    endDate: endDate,
-  });
-  console.log(newQuestion);
-
-  // await newQuestion.save();
-
-  await user?.saveQuestions?.push(newQuestion);
+  await user?.saveQuestions?.push(options);
 
   await user.save();
 

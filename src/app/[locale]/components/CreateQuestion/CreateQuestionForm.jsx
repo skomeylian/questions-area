@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -33,11 +34,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const CreateQuestionForm = ({ t }) => {
+const CreateQuestionForm = ({ t, savedOptions }) => {
   const schemaValidate = validateSchemaCreateQuestion(t);
   const router = useRouter();
 
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [isOpenSecondDialog, setIsOpenSecondDialog] = useState(false);
 
   const [optionData, setOptionData] = useState({
     title: "",
@@ -135,10 +137,7 @@ const CreateQuestionForm = ({ t }) => {
         await axios.post(
           "/api/auth/save-question",
           {
-            title: inpTitle,
-            description: inpSubTitle,
             options: finalOptions,
-            endDate: date,
           },
           {
             headers: {
@@ -156,6 +155,14 @@ const CreateQuestionForm = ({ t }) => {
       }
     },
   });
+
+  const handleSaveOption = (options) => {
+    console.log({ options });
+    setIsOpenSecondDialog(false);
+    const updatedOptions = [...finalOptions, ...options];
+    setFinalOptions(updatedOptions);
+    console.log({ finalOptions });
+  };
   return (
     <section className="my-5 flex flex-col">
       <form
@@ -276,9 +283,57 @@ const CreateQuestionForm = ({ t }) => {
               </div>
             </div>
             <DialogFooter>
-              <Button type="submit" onClick={clickHander}>
-                Save
-              </Button>
+              <div className="w-full flex justify-between">
+                <Button type="submit" onClick={clickHander}>
+                  Save
+                </Button>
+                <Button onClick={() => setIsOpenDialog(false)}>Cancel</Button>
+              </div>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={isOpenSecondDialog}>
+          <DialogTrigger asChild>
+            <Button
+              onClick={() => setIsOpenSecondDialog(true)}
+              variant="outline"
+            >
+              {t.addBSave}
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>{t.addBTitle}</DialogTitle>
+              <DialogDescription>{t.addBCaption}</DialogDescription>
+            </DialogHeader>
+            <div>
+              {savedOptions?.data == undefined || null ? (
+                <h1>Not found!</h1>
+              ) : (
+                <div className="flex flex-col gap-4">
+                  {savedOptions?.data?.map((item, index) => (
+                    <div
+                      key={index}
+                      onClick={() => handleSaveOption(item)}
+                      className="border border-primary flex  gap-3 flex-wrap p-2 rounded-sm cursor-pointer"
+                    >
+                      {item.map((element) => (
+                        <>
+                          <h1>{element.title}</h1>
+                        </>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <DialogFooter>
+              <div className="w-full flex justify-between">
+                <Button onClick={() => setIsOpenSecondDialog(false)}>
+                  Cancel
+                </Button>
+              </div>
             </DialogFooter>
           </DialogContent>
         </Dialog>
