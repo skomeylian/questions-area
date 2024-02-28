@@ -74,5 +74,8 @@ export async function POST(req, res) {
   return NextResponse.json({
     status: "success",
     message: "Question successfully created!",
+    data: {
+      url: convertTitle,
+    },
   });
 }

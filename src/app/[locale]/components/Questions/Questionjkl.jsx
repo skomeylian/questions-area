@@ -20,7 +20,7 @@ const Questionjkl = ({ res, t, subT }) => {
       <input
         type="text"
         placeholder="Search by name"
-        className="w-[40%] p-2 my-5 rounded-lg outline-none"
+        className="w-full p-2 my-5 rounded-lg outline-none md:w-[50%]"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

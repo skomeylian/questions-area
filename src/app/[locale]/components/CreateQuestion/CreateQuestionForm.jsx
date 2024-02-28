@@ -99,6 +99,7 @@ const CreateQuestionForm = ({ t, savedOptions }) => {
           .then((res) => {
             // console.log({ resS: res });
             toast.success(res.data.message);
+            router.push(`/questions/${res.data.data.url}`);
           })
           .catch((err) => {
             console.log(err);
@@ -129,6 +130,7 @@ const CreateQuestionForm = ({ t, savedOptions }) => {
           )
           .then((res) => {
             toast.success(res.data.message);
+            router.push(`/questions/${res.data.data.url}`);
           })
           .catch((err) => {
             console.log(err);

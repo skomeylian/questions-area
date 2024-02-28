@@ -22,6 +22,7 @@ const NavBar = ({ session }) => {
 
         <SideNav t={t} isAuth={session} />
       </div>
+
     </nav>
   );
 };

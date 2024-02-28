@@ -27,9 +27,7 @@ export default async function RootLayout({ children, params: { locale } }) {
       <head>
         <meta name="robots" content="noindex,nofollow" />
       </head>
-      <body
-        className={IranSansFont.className}
-      >
+      <body className={IranSansFont.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -41,10 +39,12 @@ export default async function RootLayout({ children, params: { locale } }) {
               <NavBar session={session} />
               <div className="flex flex-col space-y-6 mt-10 ">
                 <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-                  <aside className=" w-[200px] flex-col md:flex">
+                  <aside className="hidden w-[200px] flex-col md:flex">
                     <HomeSideNv session={session} />
                   </aside>
-                  <main>{children}</main>
+                  <main>
+                    {children}
+                  </main>
                 </div>
               </div>
               <Toaster position="top-center" reverseOrder={false} />

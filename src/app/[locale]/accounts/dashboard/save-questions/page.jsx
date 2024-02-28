@@ -14,14 +14,25 @@ const getQuestion = async (email) => {
 const QuestionListPage = async () => {
   const session = await getServerSession();
   const res = await getQuestion(session.user.email);
-  console.log({ res });
+  console.log({ ressss: res.data });
 
   return (
     <section className="flex flex-col w-full items-center justify-center p-2">
+      <h1 className="text-3xl font-bold text-primary">Options</h1>
       <div className="my-5 w-full flex flex-col items-center gap-7">
         {res?.data?.length > 0 ? (
-          res?.data?.map((item) => (
-            <QuestionCardUser key={uniqid()} {...item} />
+          res?.data?.map((item, index) => (
+            // <QuestionCardUser key={uniqid()} {...item} />
+
+            <div className="flex flex-col gap-4" key={index}>
+              <div className="border border-primary flex  gap-3 flex-wrap p-2 rounded-sm ">
+                {item.map((element) => (
+                  <>
+                    <h1>{element.title}</h1>
+                  </>
+                ))}
+              </div>
+            </div>
           ))
         ) : (
           <h1>
