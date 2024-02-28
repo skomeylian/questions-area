@@ -115,7 +115,8 @@
       "addBTitle": "Add",
       "addBCaption": "Click save when you re done.",
       "addInpTitle": "Title",
-      "addInpCaption": "Description"
+      "addInpCaption": "Description",
+      "tgi" : "tgi"
     }
   },
   "QuestionsPageCom": {
