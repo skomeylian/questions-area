@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const sendVote = async (id, wallet, questionId) => {
-  const res = await axios.post(`http://localhost:8085/api/auth/ssop`, {
+  const res = await axios.post(`https://questions-area-nl24ophda.vercel.app/api/auth/ssop`, {
     questionId: questionId,
     optionId: id,
     walletStr: wallet,
